@@ -5,7 +5,7 @@ resource "render_web_service" "backend" {
   
   runtime_source = {
     image = {
-      image_url = "docker.io/${var.dockerhub_username}/condocombat-backend:latest"
+      image_url = "docker.io/${var.dockerhub_username}/condocombat-backend" `n      tag = "latest"
     }
   }
 
@@ -26,7 +26,7 @@ resource "render_web_service" "frontend" {
 
   runtime_source = {
     image = {
-      image_url = "docker.io/${var.dockerhub_username}/condocombat-frontend:latest"
+      image_url = "docker.io/${var.dockerhub_username}/condocombat-frontend" `n      tag = "latest"
     }
   }
 
