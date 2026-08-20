@@ -10,8 +10,12 @@ resource "render_web_service" "backend" {
   }
 
   env_vars = {
-    "DATABASE_URL" = "postgresql://postgres.${supabase_project.database.id}:${var.supabase_db_password}@aws-0-sa-east-1.pooler.supabase.com:6543/postgres"
-    "SECRET_KEY"   = var.backend_secret_key
+    "DATABASE_URL" = {
+      value = "postgresql://postgres.${supabase_project.database.id}:${var.supabase_db_password}@aws-0-sa-east-1.pooler.supabase.com:6543/postgres"
+    }
+    "SECRET_KEY" = {
+      value = var.backend_secret_key
+    }
   }
 }
 
@@ -27,7 +31,9 @@ resource "render_web_service" "frontend" {
   }
 
   env_vars = {
-    "NEXT_PUBLIC_API_URL" = render_web_service.backend.url
+    "NEXT_PUBLIC_API_URL" = {
+      value = render_web_service.backend.url
+    }
   }
 }
 
@@ -38,4 +44,3 @@ output "backend_url" {
 output "frontend_url" {
   value = render_web_service.frontend.url
 }
-
