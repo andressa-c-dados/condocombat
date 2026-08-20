@@ -1,5 +1,5 @@
 resource "supabase_project" "database" {
-  organization_id   = "your-supabase-organization-id"
+  organization_id   = var.supabase_organization_id
   name              = "condocombat-db"
   database_password = var.supabase_db_password
   region            = "sa-east-1"
